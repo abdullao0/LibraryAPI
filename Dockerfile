@@ -9,10 +9,6 @@ WORKDIR /usr/src/app
 # Copy package files and install dependencies
 
 COPY package*.json ./
-RUN npm install --production
-
-# Indtall dependecies
-
 RUN npm install
 
 # Copy rest of project
@@ -25,4 +21,4 @@ EXPOSE 3000
 
 # Start app
 
-CMD [ "npm", "src/index"]
+CMD [ "npm", "start"]
