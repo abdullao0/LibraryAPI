@@ -1,27 +1,24 @@
-version: "3.8"
+version: '3.9'
 
 services:
-  app:
+  node-app:
     build: .
-    container_name: library-app
     ports:
       - "3000:3000"
+    restart: always
+    env_file:
+      - .env
     depends_on:
-      - db
-    environment:
-      PORT: 3000
-      DB_HOST: db
-      DB_USER: root
-      DB_PASSWORD: root
-      DB_NAME: library
+      - mysql
 
-  db:
+  mysql:
     image: mysql:8
-    container_name: library-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: library
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
     ports:
       - "3306:3306"
     volumes:

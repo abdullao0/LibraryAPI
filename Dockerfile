@@ -4,11 +4,12 @@ FROM node:20-alpine
 
 # Create app dir
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy package files first (better caching)
+# Copy package files and install dependencies
 
 COPY package*.json ./
+RUN npm install --production
 
 # Indtall dependecies
 
@@ -24,4 +25,4 @@ EXPOSE 3000
 
 # Start app
 
-CMD [ "npm", "start"]
+CMD [ "npm", "src/index"]
