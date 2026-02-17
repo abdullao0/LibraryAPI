@@ -23,7 +23,7 @@ app.use('/members', membersRoutes);
 
 app.get('/',(req, res) => {
 
-    res.json({message:'Library API running'})
+    res.json({message:'Library API is running'})
 })
 
 
