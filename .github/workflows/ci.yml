@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Copy env file
+        run: cp .env.example .env
+
       #Build and start Docker Compose (app + DB)
       - name: Build and start Docker compose
         run: docker compose up -d --build
