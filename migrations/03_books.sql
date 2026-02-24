@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS books (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  authid BIGINT,
+  title TEXT NOT NULL,
+  genre TEXT,
+  releasedate DATE,
+  isborrowed BOOLEAN NOT NULL DEFAULT FALSE,
+  CONSTRAINT books_authid_fkey FOREIGN KEY (authid)
+    REFERENCES authors(id)
+    ON DELETE SET NULL
+);
