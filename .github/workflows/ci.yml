@@ -14,16 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      #Build and start Docker Compose (app + DB)
+      - name: Build and start Docker compose
+        run: docker compose up -d --build
         
-        with:
-          node-version: '20'
-      - name: Install dependencies
-        run: npm install
-        
-      - name: Run tests
-        run: npm test
+      - name: wait for database to be ready
+        run: |
+          echo "wait for DB to init..."
+          sleep 13
+
+      # 4️⃣ Run Jest tests inside node-app container
+      - name: Run tests inside Docker
+        run: docker-compose run --rm node-app npm test
 
       - name: Build Docker image
         run: docker build -t myapp:latest .
