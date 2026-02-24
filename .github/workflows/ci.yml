@@ -26,7 +26,7 @@ jobs:
         run: npm test
 
       - name: Build Docker image
-        run: docker build -t library-api:latest .
+        run: docker build -t myapp:latest .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -36,8 +36,8 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker tag library-api:latest ${{ secrets.DOCKER_USERNAME }}/library-api:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/library-api:latest
+          docker tag myapp:latest ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/myapp:latest
 
 
 
