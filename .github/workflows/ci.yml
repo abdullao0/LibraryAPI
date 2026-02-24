@@ -28,7 +28,7 @@ jobs:
 
       #  Run Jest tests inside node-app container
       - name: Run tests inside Docker
-        run: docker-compose run --rm node-app npm test
+        run: docker compose run --rm node-app npm test
 
       - name: Build Docker image
         run: docker build -t myapp:latest .
