@@ -23,7 +23,7 @@ jobs:
           echo "wait for DB to init..."
           sleep 13
 
-      # 4️⃣ Run Jest tests inside node-app container
+      #  Run Jest tests inside node-app container
       - name: Run tests inside Docker
         run: docker-compose run --rm node-app npm test
 
