@@ -14,7 +14,7 @@ app.use('/authors', authorsRoutes)
 app.use('/members', membersRoutes)
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Library API is running' })
+  res.json({ message: 'Library API has been updated!' })
 })
 
 if (require.main === module) {
